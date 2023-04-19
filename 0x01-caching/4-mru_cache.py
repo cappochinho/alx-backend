@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-LRUCache module
+MRUCache module
 """
 
 
@@ -8,9 +8,9 @@ from collections import OrderedDict
 from base_caching import BaseCaching
 
 
-class LRUCache(BaseCaching):
+class MRUCache(BaseCaching):
     """
-    Implements LRU Caching using base class BaseCaching
+    Implements MRU Caching using base class BaseCaching
     """
 
     def __init__(self):
@@ -19,7 +19,7 @@ class LRUCache(BaseCaching):
 
     def put(self, key, item):
         """
-        Add an item to the LRUCache
+        Add an item to the MRUCache
         """
 
         if key is None or item is None:
@@ -31,8 +31,8 @@ class LRUCache(BaseCaching):
 
         if len(self.cache_data.keys()) > BaseCaching.MAX_ITEMS:
             discard = list(self.cache_data.keys())
-            self.cache_data.pop(discard[0])
-            print(f"DISCARD: {discard[0]}")
+            self.cache_data.pop(discard[-2])
+            print(f"DISCARD: {discard[-2]}")
 
     def get(self, key):
         """
