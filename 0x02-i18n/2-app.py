@@ -7,6 +7,7 @@ from flask_babel import Babel
 
 
 app = Flask(__name__)
+app.url_map.strict_slashes = False
 babel = Babel(app)
 
 
@@ -30,6 +31,8 @@ def index():
 
 @babel.localeselector
 def get_locale():
+    """Returns the locale from the user's preference"""
+
     return request.accept_languages.best_match(Config.LANGUAGES)
 
 
