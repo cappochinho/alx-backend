@@ -16,5 +16,13 @@ app.config['BABEL_DEFAULT_TIMEZONE'] = 'UTC'
 
 app.config.from_object(Config)
 
+
+@app.route("/")
+def index():
+    """This is the entry point to the app"""
+
+    return render_template('1-index.html')
+
+
 if __name__ == "__main__":
     app.run(host="localhost", port=5000)
