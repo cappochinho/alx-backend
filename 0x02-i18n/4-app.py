@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""First attempt at using Babel"""
+"""
+Using Flask and Babel to configure a webpage
+that renders English and French translations
+"""
 
 
 from flask import Flask, render_template, request
@@ -22,7 +25,7 @@ class Config(object):
 app.config.from_object(Config)
 
 
-@app.route("/")
+@app.route("/", methods=['GET'])
 def index():
     """This is the entry point to the app"""
 
@@ -31,7 +34,11 @@ def index():
 
 @babel.localeselector
 def get_locale():
-    """Returns the locale from the user's preference"""
+    """
+    Returns the locale from the user's preference
+    Allows a user to pass a preferred translation of
+    a webpage as a query string
+    """
 
     locale = request.args.get('locale')
     if locale and locale in Config.LANGUAGES:
