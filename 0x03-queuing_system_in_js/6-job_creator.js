@@ -1,10 +1,11 @@
+import kue from 'kue';
+
+let push_notification_code = kue.createQueue();
+
 const jobData = {
   phoneNumber: '+233546938313',
   message: 'Edward Junior Agyemang-Prempeh',
 }
-
-const kue = require('kue');
-let push_notification_code = kue.createQueue();
 
 const notificationJob = push_notification_code.createJob(jobData);
 
